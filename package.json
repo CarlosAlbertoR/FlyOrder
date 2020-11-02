@@ -1,0 +1,29 @@
+{
+  "name": "flyorder",
+  "version": "1.0.0",
+  "description": "Gestion de usuarios ordenes y pedidos de bares y restaurantes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "Bares",
+    "Clientes",
+    "Ordenes",
+    "Pedidos",
+    "Restaurantes"
+  ],
+  "author": "Carlos Alberto Rios",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "eslint": "^7.12.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
