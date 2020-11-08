@@ -21,7 +21,6 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
-    "eslint": "^7.12.1",
     "express": "^4.17.1",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
@@ -29,6 +28,9 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.6"
   }
 }
