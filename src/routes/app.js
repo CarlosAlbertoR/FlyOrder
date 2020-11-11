@@ -14,8 +14,10 @@ app.get('/listCustomer', signupCustomer.listCustomer);
 
 app.get('/signupCustomer', listCustomer.error);
 
-app.get('/profile', profile.listCustomer);
+app.get('/listEstablishment', profile.listEstablishment);
+app.get('/error', profile.error);
 
+app.get('/profile', profile.listCustomer);
 app.get('/signinCustomer', profile.error);
 
 app.post('/signupCustomer', passport.authenticate('local-signup-customer', {
@@ -25,8 +27,20 @@ app.post('/signupCustomer', passport.authenticate('local-signup-customer', {
 }));
 
 app.post('/signinCustomer', passport.authenticate('local-signin-customer', {
-    successMessage: '/profile',
+    successRedirect: '/profile',
     failureRedirect: '/signinCustomer',
+    passReqToCallback: false
+}));
+
+app.post('/signupEstablishment', passport.authenticate('local-signup-establishment', {
+    successRedirect: '/listEstablishment',
+    failureRedirect: '/error',
+    passReqToCallback: true
+}));
+
+app.post('/signinestablish', passport.authenticate('local-signin-establishment', {
+    successRedirect: '/listEstablishment',
+    failureRedirect: '/error',
     passReqToCallback: false
 }));
 
