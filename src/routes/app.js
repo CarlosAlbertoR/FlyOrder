@@ -38,7 +38,7 @@ app.post('/signupEstablishment', passport.authenticate('local-signup-establishme
     passReqToCallback: true
 }));
 
-app.post('/signinestablish', passport.authenticate('local-signin-establishment', {
+app.post('/signinEstablishment', passport.authenticate('local-signin-establishment', {
     successRedirect: '/listEstablishment',
     failureRedirect: '/error',
     passReqToCallback: false
