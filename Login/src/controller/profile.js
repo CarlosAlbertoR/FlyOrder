@@ -1,6 +1,6 @@
 const Customer = require('../models/local-customer');
 const Establishment = require('../models/local-establishment');
-const pool = require('../settings/db')
+const pool = require('../../settings/db')
 
 let listCustomer = async (req, res) => {
     const model = await Customer.find();

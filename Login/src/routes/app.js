@@ -2,7 +2,6 @@ const express = require('express');
 const passport = require('passport');
 
 const index = require('../controller/mainRoute');
-const signupCustomer = require('../controller/listCustomer');
 const listCustomer = require('../controller/listCustomer');
 const profile = require('../controller/profile');
 
@@ -10,7 +9,7 @@ const app = express.Router();
 
 app.get('/', index.index);
 
-app.get('/listCustomer', signupCustomer.listCustomer);
+app.get('/listCustomer', listCustomer.listCustomer);
 
 app.get('/signupCustomer', listCustomer.error);
 
