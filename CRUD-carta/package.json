@@ -1,0 +1,28 @@
+{
+  "name": "crud-carta",
+  "version": "1.0.0",
+  "description": "crud para la carta de los establecimientos",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "author": "Carlos Alberto R",
+  "license": "ISC",
+  "keywords": [
+    "Carta",
+    "menu",
+    "CRUD",
+    "gestion"
+  ],
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "nodemon": "^2.0.6"
+  }
+}
