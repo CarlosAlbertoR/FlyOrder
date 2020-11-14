@@ -1,9 +1,11 @@
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 
 //Inicializaciones
 const app = express();
+app.use(cors());
 require('./src/settings/db');
 
 //Configuraciones

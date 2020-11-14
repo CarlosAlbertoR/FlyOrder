@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const service = require('../services');
 
 const Customer = require('../models/local-customer');
 const Establishment = require('../models/local-establishment');
@@ -42,7 +43,7 @@ passport.use('local-signup-customer', new LocalStrategy({
         newCustomer.password = newCustomer.encryptPassword(password);
         console.log(newCustomer);
         await newCustomer.save();
-        done(null, newCustomer);
+        done(null, newCustomer, { token: service.createToken(newCustomer) });
     }
 }));
 
@@ -58,7 +59,7 @@ passport.use('local-signin-customer', new LocalStrategy({
     if(!customer.validatePassword(password)){
         return done(null, false, console.log('Contraseña incorrecta'));
     }
-    done(null, customer);
+    done(null, customer, { token: service.createToken(customer) });
 }));
 
 passport.use('local-signup-establishment', new LocalStrategy({
@@ -83,7 +84,7 @@ passport.use('local-signup-establishment', new LocalStrategy({
         newEstablishment.password = newEstablishment.encryptPassword(password);
         console.log(newEstablishment);
         await newEstablishment.save();
-        done(null, newEstablishment);
+        done(null, newEstablishment, { token: service.createToken(newEstablishment) });
     }
 }));
 
@@ -99,5 +100,5 @@ passport.use('local-signin-establishment', new LocalStrategy({
     if(!establishment.validatePassword(password)){
         return done(null, false, console.log('Contraseña incorrecta'));
     }
-    done(null, establishment);
+    done(null, establishment, { token: service.createToken(establishment) });
 }));
