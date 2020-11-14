@@ -1,7 +1,7 @@
 //const express = require('express');
 
 const Customer = require('../models/local-customer');
-const pool = require('../../settings/db')
+const pool = require('../settings/db')
 
 
 let listCustomer = async (req, res) => {

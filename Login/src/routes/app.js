@@ -10,7 +10,6 @@ const app = express.Router();
 app.get('/', index.index);
 
 app.get('/listCustomer', listCustomer.listCustomer);
-
 app.get('/signupCustomer', listCustomer.error);
 
 app.get('/listEstablishment', profile.listEstablishment);

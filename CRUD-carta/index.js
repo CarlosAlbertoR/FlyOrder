@@ -4,8 +4,7 @@ const morgan = require('morgan');
 
 //Inicializaciones
 const app = express();
-require('./settings/db');
-require('');
+require('./src/settings/db');
 
 //Configuraciones
 app.set('port', process.env.PORT || 3001);
