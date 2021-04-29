@@ -2,76 +2,76 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const service = require('../services');
 
-const Customer = require('../models/local-customer');
+const Client = require('../models/local-client');
 const Establishment = require('../models/local-establishment');
 
-passport.serializeUser((customer, done) => {
-    done(null, customer.id);
+passport.serializeUser((client, done) => {
+    done(null, client.id);
 });
 
 passport.serializeUser((establishment, done) => {
     done(null, establishment.id);
 });
 
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async(id, done) => {
     const establishment = await Establishment.findById(id);
     done(null, establishment);
 });
 
-passport.deserializeUser(async (id, done) => {
-    const customer = await Customer.findById(id);
-    done(null, customer);
+passport.deserializeUser(async(id, done) => {
+    const client = await Client.findById(id);
+    done(null, client);
 });
 
-passport.use('local-signup-customer', new LocalStrategy({
+passport.use('local-signup-client', new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
     passReqToCallback: true
-}, async (req, email, password, done) => {
-    const customer = await Customer.findOne({'email': email})
-    console.log(customer)
-    if(customer){
+}, async(req, email, password, done) => {
+    const client = await Client.findOne({ 'email': email })
+    console.log(client)
+    if (client) {
         return done(null, false, console.log('El usuario ya se encuentra registrado'));
-    }else{
-        const newCustomer = new Customer();
-        newCustomer.name = req.body.name;
-        newCustomer.address = req.body.address;
-        newCustomer.city = req.body.city;
-        newCustomer.phone = req.body.phone;
+    } else {
+        const newClient = new Client();
+        newClient.name = req.body.name;
+        newClient.address = req.body.address;
+        newClient.city = req.body.city;
+        newClient.phone = req.body.phone;
 
-        newCustomer.email = email;
-        newCustomer.password = newCustomer.encryptPassword(password);
-        console.log(newCustomer);
-        await newCustomer.save();
-        done(null, newCustomer, { token: service.createToken(newCustomer) });
+        newClient.email = email;
+        newClient.password = newClient.encryptPassword(password);
+        console.log(newClient);
+        await newClient.save();
+        done(null, newClient, { token: service.createToken(newClient) });
     }
 }));
 
-passport.use('local-signin-customer', new LocalStrategy({
+passport.use('local-signin-client', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-}, async (req, email, password, done) => {
-    const customer = await Customer.findOne({email: email});
-    if(!customer){
-        return done(null,false, console.log('Usuario no encontrado'));
+}, async(req, email, password, done) => {
+    const client = await Client.findOne({ email: email });
+    if (!client) {
+        return done(null, false, console.log('Usuario no encontrado'));
     }
-    if(!customer.validatePassword(password)){
+    if (!client.validatePassword(password)) {
         return done(null, false, console.log('Contraseña incorrecta'));
     }
-    done(null, customer, { token: service.createToken(customer) });
+    done(null, client, { token: service.createToken(client) });
 }));
 
 passport.use('local-signup-establishment', new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
     passReqToCallback: true
-}, async (req, email, password, done) => {
-    const establishment = await Establishment.findOne({'email': email})
+}, async(req, email, password, done) => {
+    const establishment = await Establishment.findOne({ 'email': email })
     console.log(establishment)
-    if(establishment){
+    if (establishment) {
         return done(null, false, console.log('El usuario ya se encuentra registrado'));
-    }else{
+    } else {
         const newEstablishment = new Establishment();
         newEstablishment.name = req.body.name;
         newEstablishment.address = req.body.address;
@@ -92,12 +92,12 @@ passport.use('local-signin-establishment', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-}, async (req, email, password, done) => {
-    const establishment = await Establishment.findOne({email: email});
-    if(!establishment){
-        return done(null,false, console.log('Usuario no encontrado'));
+}, async(req, email, password, done) => {
+    const establishment = await Establishment.findOne({ email: email });
+    if (!establishment) {
+        return done(null, false, console.log('Usuario no encontrado'));
     }
-    if(!establishment.validatePassword(password)){
+    if (!establishment.validatePassword(password)) {
         return done(null, false, console.log('Contraseña incorrecta'));
     }
     done(null, establishment, { token: service.createToken(establishment) });
