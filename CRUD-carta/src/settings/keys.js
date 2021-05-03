@@ -1,5 +1,5 @@
 module.exports = {
     mongodb: {
-        URI: 'mongodb://localhost:27017/fly_order'
+        URI: 'mongodb+srv://CarlosAR:Qwerty1234@clusterflyorder.tm5nb.mongodb.net/products?retryWrites=true&w=majority'
     }
 };

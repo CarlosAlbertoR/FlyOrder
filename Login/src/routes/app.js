@@ -17,7 +17,7 @@ app.delete('/client/:clientId', client.deleteClient);
 app.post('/client/search', client.search);
 app.get('/error', client.error);
 
-app.get('/listEstablishments', establishment.getEstablihments);
+app.get('/listEstablishments', establishment.getEstablishments);
 app.get('/establishment/:establishmentId', establishment.getEstablishment);
 app.put('/establishment/:establishmentId', establishment.updateEstablishment);
 app.delete('/establishment/:establishmentId', establishment.deleteEstablishment);
@@ -43,7 +43,7 @@ app.post('/signupEstablishment', passport.authenticate('local-signup-establishme
 }));
 
 app.post('/signinEstablishment', passport.authenticate('local-signin-establishment', {
-    successRedirect: '/listEstablishment',
+    successRedirect: '/listEstablishments',
     failureRedirect: '/error',
     passReqToCallback: false
 }));

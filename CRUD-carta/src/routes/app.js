@@ -3,9 +3,9 @@ const product = require('../controller/product');
 
 const app = express.Router();
 
-app.get('/listProduct', product.getProducts)
+app.get('/listProducts', product.getProducts)
 app.get('/product/:productId', product.getProduct)
-app.post('/product', product.saveProduct)
+app.post('/product/saveProduct', product.saveProduct)
 app.put('/product/:productId', product.updateProduct)
 app.delete('/product/:productId', product.deleteProduct)
 
